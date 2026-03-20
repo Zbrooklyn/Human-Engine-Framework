@@ -33,4 +33,5 @@ Execute the gate workflow from @C:/Users/Owner/.claude/human-engine/workflows/ga
 Run all 5 passes with real evidence. Do not fabricate passing results.
 If any pass fails, report the failure and what needs fixing — do NOT report the task as done.
 Use the gate-checklist template for output format.
+After evaluation, write the gate state file (see workflow Step 5) so the enforcement hook knows the gate was run.
 </process>

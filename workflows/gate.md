@@ -87,6 +87,35 @@ Use the template from `human-engine/templates/gate-checklist.md`.
 
 If all passes clear, THEN and only then report to the user that the work is complete.
 
+## Step 5: Write Gate State File (Enforcement)
+
+After all 5 passes are evaluated, write a state file so the enforcement hook knows the gate was run.
+
+Run this Bash command:
+```bash
+node -e "
+const fs = require('fs');
+const os = require('os');
+const path = require('path');
+const sessionId = process.env.SESSION_ID || 'unknown';
+const verdict = process.argv[1];
+const gatePath = path.join(os.tmpdir(), 'he-gate-' + sessionId + '.json');
+fs.writeFileSync(gatePath, JSON.stringify({
+  timestamp: Math.floor(Date.now() / 1000),
+  verdict: verdict,
+  session_id: sessionId
+}));
+console.log('Gate state written: ' + verdict);
+" "VERDICT_HERE"
+```
+
+Replace `VERDICT_HERE` with:
+- `PASS` — all 5 passes cleared
+- `WARN` — some warnings but no failures
+- `FAIL` — at least one failure
+
+Only `PASS` and `WARN` satisfy the enforcement hook. `FAIL` will still trigger a warning on commit.
+
 ## Critical Rules
 
 - This gate is not optional. Ever.

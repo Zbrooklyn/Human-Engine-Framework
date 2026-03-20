@@ -25,7 +25,10 @@
 - [x] README: Enforcement opt-in section added
 - [x] Internal review doc removed from public repo
 - [x] Hook included in repo (`hooks/`) for distribution
-- [ ] Test full gate→commit enforcement cycle end-to-end (session ID resolution)
+- [x] Session ID bridge: hook writes to `$TMPDIR/he-session.json`, gate reads it — tested end-to-end
+- [x] Portable paths: repo uses `@~/.claude/` prefix, `install.sh` resolves for target system
+- [x] Human-in-the-loop approval gates on all action-taking workflows
+- [x] Human agency checks added to Categories 6 and 17
 - [ ] Tune staleness window (currently 30 min) based on real usage
 
 ## v1.2.0 — Cross-Model Compatibility
@@ -47,8 +50,6 @@
 
 ## v1.5.0 — Polish & Expansion
 - [ ] Add `/he:do` router — smart dispatcher like `/gsd:do` for natural language routing
-- [ ] Make `@` file paths in commands portable (relative or configurable) for public repo users
-- [ ] Add installation script (`install.sh` / `install.ps1`) that copies files to `~/.claude/`
 - [ ] Trim command count if usage data shows some commands unused
 - [ ] Consider hard enforcement mode (block commit, not just warn) as opt-in setting
 

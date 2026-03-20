@@ -103,27 +103,33 @@ Wait for user response before proceeding.
 
 After all 5 passes are evaluated, write a state file so the enforcement hook knows the gate was run.
 
-The agent must write the gate state file using the session ID from the current Claude Code session context. The session ID is available in the hook system's `session_id` field — the agent should use whatever session identifier it has access to.
-
-Run this Bash command, replacing `SESSION_ID_HERE` with the actual session ID and `VERDICT_HERE` with the verdict:
+Run this Bash command, replacing `VERDICT_HERE` with the verdict:
 ```bash
 node -e "
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const sessionId = process.argv[1];
-const verdict = process.argv[2];
-const gatePath = path.join(os.tmpdir(), 'he-gate-' + sessionId + '.json');
+const tmpDir = os.tmpdir();
+const verdict = process.argv[1];
+
+// Read session ID from bridge file (written by the enforcement hook on every Bash call)
+let sessionId = 'unknown';
+try {
+  const bridge = JSON.parse(fs.readFileSync(path.join(tmpDir, 'he-session.json'), 'utf8'));
+  sessionId = bridge.session_id || 'unknown';
+} catch (e) {
+  console.log('Warning: could not read session bridge file. Gate state may not be found by enforcement hook.');
+}
+
+const gatePath = path.join(tmpDir, 'he-gate-' + sessionId + '.json');
 fs.writeFileSync(gatePath, JSON.stringify({
   timestamp: Math.floor(Date.now() / 1000),
   verdict: verdict,
   session_id: sessionId
 }));
 console.log('Gate state written: ' + verdict + ' for session ' + sessionId);
-" "SESSION_ID_HERE" "VERDICT_HERE"
+" "VERDICT_HERE"
 ```
-
-**How to get the session ID**: The agent should check `$SESSION_ID` env var first. If empty, use the session identifier from the conversation context. As a last resort, use the output of `echo $CLAUDE_SESSION_ID` or similar Claude Code environment variables. The key requirement is that this value matches the `session_id` field that the enforcement hook receives in its JSON input.
 
 Replace `VERDICT_HERE` with:
 - `PASS` — all 5 passes cleared
@@ -131,6 +137,8 @@ Replace `VERDICT_HERE` with:
 - `FAIL` — at least one failure
 
 Only `PASS` and `WARN` satisfy the enforcement hook. `FAIL` will still trigger a warning on commit.
+
+**How it works**: The enforcement hook writes the session ID to `$TMPDIR/he-session.json` on every Bash call (as a bridge). The gate reads that file to get the correct session ID. No env vars needed.
 
 ## Critical Rules
 

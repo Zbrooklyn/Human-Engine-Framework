@@ -1,19 +1,13 @@
 #!/usr/bin/env node
 // Human Engine — Gate Enforcement Hook (PreToolUse)
 //
-// Fires before Bash tool use. If the command is a `git commit`,
-// checks whether /he:gate was run this session. If not, injects a warning.
+// Two jobs:
+// 1. Bridge: writes session ID to $TMPDIR/he-session.json on every Bash call
+//    so the agent can read it when running /he:gate
+// 2. Enforce: warns before `git commit` if no /he:gate evidence exists
 //
-// Soft enforcement: warns but doesn't block.
-//
-// Project opt-in: Only fires in projects with a `.human-engine` marker file
-// in the working directory. Projects without the marker are not affected.
-//
-// State file: $TMPDIR/he-gate-{session_id}.json
-//   Written by /he:gate when all 5 passes clear.
-//   Contains: { timestamp, verdict, session_id }
-//
-// Staleness: Gate evidence expires after 30 minutes.
+// Project opt-in: enforcement only fires in projects with a `.human-engine`
+// marker file. The session bridge always writes (cheap, needed by gate).
 
 const fs = require('fs');
 const os = require('os');
@@ -35,30 +29,42 @@ process.stdin.on('end', () => {
       process.exit(0);
     }
 
-    // Only fire on git commit commands
+    const sessionId = data.session_id;
+    const tmpDir = os.tmpdir();
+
+    // Job 1: Always write session bridge file so /he:gate can find the session ID
+    if (sessionId) {
+      try {
+        const bridgePath = path.join(tmpDir, 'he-session.json');
+        fs.writeFileSync(bridgePath, JSON.stringify({
+          session_id: sessionId,
+          timestamp: Math.floor(Date.now() / 1000)
+        }));
+      } catch (e) {
+        // Best-effort — don't break anything
+      }
+    }
+
+    // Job 2: Enforcement — only on git commit in opted-in projects
     const command = data.tool_input?.command || '';
     if (!command.match(/\bgit\s+commit\b/)) {
       process.exit(0);
     }
 
-    // Skip amends (likely fix-ups, not new work)
     if (command.match(/--amend/)) {
       process.exit(0);
     }
 
-    // Project opt-in: only fire if .human-engine marker exists in cwd
     const cwd = data.cwd || process.cwd();
     if (!fs.existsSync(path.join(cwd, '.human-engine'))) {
       process.exit(0);
     }
 
-    const sessionId = data.session_id;
     if (!sessionId) {
       process.exit(0);
     }
 
     // Check for gate state file
-    const tmpDir = os.tmpdir();
     const gatePath = path.join(tmpDir, `he-gate-${sessionId}.json`);
 
     let gateExists = false;
@@ -81,7 +87,6 @@ process.stdin.on('end', () => {
     }
 
     if (gateExists) {
-      // Gate was run and passed recently — allow commit
       process.exit(0);
     }
 
@@ -104,7 +109,6 @@ process.stdin.on('end', () => {
 
     process.stdout.write(JSON.stringify(output));
   } catch (e) {
-    // Silent fail — never block tool execution
     process.exit(0);
   }
 });

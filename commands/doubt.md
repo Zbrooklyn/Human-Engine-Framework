@@ -18,8 +18,8 @@ Run Phase 8 (Self-Audit) of the Human Operating System as a standalone deep chec
 </objective>
 
 <execution_context>
-@C:/Users/Owner/.claude/human-engine/workflows/doubt.md
-@C:/Users/Owner/.claude/human-engine/references/anti-patterns.md
+@~/.claude/human-engine/workflows/doubt.md
+@~/.claude/human-engine/references/anti-patterns.md
 </execution_context>
 
 <context>
@@ -27,7 +27,7 @@ $ARGUMENTS
 </context>
 
 <process>
-Execute the doubt workflow from @C:/Users/Owner/.claude/human-engine/workflows/doubt.md end-to-end.
+Execute the doubt workflow from @~/.claude/human-engine/workflows/doubt.md end-to-end.
 Be honest, not defensive. Surface real concerns with evidence.
 If real problems are found, investigate and report — don't just list worries.
 Re-loop if new concerns emerge from investigation.

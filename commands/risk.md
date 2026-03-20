@@ -18,9 +18,9 @@ Run Phase 6 (Risk) of the Human Operating System. Forecasts immediate, short-ter
 </objective>
 
 <execution_context>
-@C:/Users/Owner/.claude/human-engine/workflows/risk.md
-@C:/Users/Owner/.claude/human-engine/references/scoring.md
-@C:/Users/Owner/.claude/human-engine/templates/risk-assessment.md
+@~/.claude/human-engine/workflows/risk.md
+@~/.claude/human-engine/references/scoring.md
+@~/.claude/human-engine/templates/risk-assessment.md
 </execution_context>
 
 <context>
@@ -28,7 +28,7 @@ $ARGUMENTS
 </context>
 
 <process>
-Execute the risk workflow from @C:/Users/Owner/.claude/human-engine/workflows/risk.md end-to-end.
+Execute the risk workflow from @~/.claude/human-engine/workflows/risk.md end-to-end.
 Think forward at three time horizons: first week, first month, 3-6 months.
 Create at least 3 specific failure scenarios with likelihood, impact, and mitigation.
 Output a risk matrix sorted by severity.

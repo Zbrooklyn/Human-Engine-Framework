@@ -21,8 +21,8 @@ Run Phase 5 (Comparison) of the Human Operating System. Identifies real competit
 </objective>
 
 <execution_context>
-@C:/Users/Owner/.claude/human-engine/workflows/compare.md
-@C:/Users/Owner/.claude/human-engine/references/scoring.md
+@~/.claude/human-engine/workflows/compare.md
+@~/.claude/human-engine/references/scoring.md
 </execution_context>
 
 <context>
@@ -30,7 +30,7 @@ $ARGUMENTS
 </context>
 
 <process>
-Execute the compare workflow from @C:/Users/Owner/.claude/human-engine/workflows/compare.md end-to-end.
+Execute the compare workflow from @~/.claude/human-engine/workflows/compare.md end-to-end.
 Identify real alternatives. Use web search if needed to find current competitors.
 Produce an honest comparison matrix with specific assessments.
 Identify must-fix gaps, nice-to-have gaps, and our advantages.

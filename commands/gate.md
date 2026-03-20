@@ -18,10 +18,10 @@ Run the mandatory 5-pass completion gate before reporting work as done. Each pas
 </objective>
 
 <execution_context>
-@C:/Users/Owner/.claude/human-engine/workflows/gate.md
-@C:/Users/Owner/.claude/human-engine/references/scoring.md
-@C:/Users/Owner/.claude/human-engine/references/anti-patterns.md
-@C:/Users/Owner/.claude/human-engine/templates/gate-checklist.md
+@~/.claude/human-engine/workflows/gate.md
+@~/.claude/human-engine/references/scoring.md
+@~/.claude/human-engine/references/anti-patterns.md
+@~/.claude/human-engine/templates/gate-checklist.md
 </execution_context>
 
 <context>
@@ -29,7 +29,7 @@ $ARGUMENTS
 </context>
 
 <process>
-Execute the gate workflow from @C:/Users/Owner/.claude/human-engine/workflows/gate.md end-to-end.
+Execute the gate workflow from @~/.claude/human-engine/workflows/gate.md end-to-end.
 Run all 5 passes with real evidence. Do not fabricate passing results.
 If any pass fails, report the failure and what needs fixing — do NOT report the task as done.
 Use the gate-checklist template for output format.

@@ -18,9 +18,9 @@ Run Phase 10 (Reflection) of the Human Operating System. Extracts lessons, check
 </objective>
 
 <execution_context>
-@C:/Users/Owner/.claude/human-engine/workflows/reflect.md
-@C:/Users/Owner/.claude/human-engine/references/anti-patterns.md
-@C:/Users/Owner/.claude/human-engine/templates/reflection-log.md
+@~/.claude/human-engine/workflows/reflect.md
+@~/.claude/human-engine/references/anti-patterns.md
+@~/.claude/human-engine/templates/reflection-log.md
 </execution_context>
 
 <context>
@@ -28,7 +28,7 @@ $ARGUMENTS
 </context>
 
 <process>
-Execute the reflect workflow from @C:/Users/Owner/.claude/human-engine/workflows/reflect.md end-to-end.
+Execute the reflect workflow from @~/.claude/human-engine/workflows/reflect.md end-to-end.
 Review what happened vs. what was expected. Extract specific lessons.
 Check against the 7 anti-patterns. Produce at least one concrete action.
 If lessons are worth preserving, update memory files and self-improvement log.

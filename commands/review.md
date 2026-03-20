@@ -20,11 +20,11 @@ Run the complete Human Operating System review loop — 21 categories across 10 
 </objective>
 
 <execution_context>
-@C:/Users/Owner/.claude/human-engine/workflows/review.md
-@C:/Users/Owner/.claude/human-engine/references/framework.md
-@C:/Users/Owner/.claude/human-engine/references/review-modes.md
-@C:/Users/Owner/.claude/human-engine/references/scoring.md
-@C:/Users/Owner/.claude/human-engine/templates/review-report.md
+@~/.claude/human-engine/workflows/review.md
+@~/.claude/human-engine/references/framework.md
+@~/.claude/human-engine/references/review-modes.md
+@~/.claude/human-engine/references/scoring.md
+@~/.claude/human-engine/templates/review-report.md
 </execution_context>
 
 <context>
@@ -32,7 +32,7 @@ $ARGUMENTS
 </context>
 
 <process>
-Execute the review workflow from @C:/Users/Owner/.claude/human-engine/workflows/review.md end-to-end.
+Execute the review workflow from @~/.claude/human-engine/workflows/review.md end-to-end.
 Present review mode options. Wait for user choice. Then run the selected review mode.
 Use scoring from references/scoring.md. Output using templates/review-report.md format.
 If self-doubt (Phase 8) surfaces issues, re-loop affected phases.

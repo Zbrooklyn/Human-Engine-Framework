@@ -22,13 +22,13 @@ Use this when you know you want the full parallel audit and don't want to go thr
 </objective>
 
 <execution_context>
-@C:/Users/Owner/.claude/human-engine/workflows/review.md
-@C:/Users/Owner/.claude/human-engine/workflows/full.md
-@C:/Users/Owner/.claude/human-engine/references/framework.md
-@C:/Users/Owner/.claude/human-engine/references/review-modes.md
-@C:/Users/Owner/.claude/human-engine/references/scoring.md
-@C:/Users/Owner/.claude/human-engine/references/anti-patterns.md
-@C:/Users/Owner/.claude/human-engine/templates/review-report.md
+@~/.claude/human-engine/workflows/review.md
+@~/.claude/human-engine/workflows/full.md
+@~/.claude/human-engine/references/framework.md
+@~/.claude/human-engine/references/review-modes.md
+@~/.claude/human-engine/references/scoring.md
+@~/.claude/human-engine/references/anti-patterns.md
+@~/.claude/human-engine/templates/review-report.md
 </execution_context>
 
 <context>
@@ -37,7 +37,7 @@ $ARGUMENTS
 
 <process>
 Skip the mode selection prompt. Go directly to Deep Parallel mode (mode B) from the review workflow.
-Use the full workflow's agent configuration (5 parallel agents) from @C:/Users/Owner/.claude/human-engine/workflows/full.md.
+Use the full workflow's agent configuration (5 parallel agents) from @~/.claude/human-engine/workflows/full.md.
 Consolidate findings and produce the scored report using the review-report template.
 
 If the subject is too small or the Agent tool is unavailable, fall back to Quick Review (mode A) and inform the user.

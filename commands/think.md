@@ -19,9 +19,9 @@ Run Phases 1-3 of the Human Operating System before starting work. Produces a Th
 </objective>
 
 <execution_context>
-@C:/Users/Owner/.claude/human-engine/workflows/think.md
-@C:/Users/Owner/.claude/human-engine/references/framework.md
-@C:/Users/Owner/.claude/human-engine/templates/think-brief.md
+@~/.claude/human-engine/workflows/think.md
+@~/.claude/human-engine/references/framework.md
+@~/.claude/human-engine/templates/think-brief.md
 </execution_context>
 
 <context>
@@ -29,7 +29,7 @@ $ARGUMENTS
 </context>
 
 <process>
-Execute the think workflow from @C:/Users/Owner/.claude/human-engine/workflows/think.md end-to-end.
+Execute the think workflow from @~/.claude/human-engine/workflows/think.md end-to-end.
 Read relevant project files to understand context before producing the Think Brief.
 Wait for user confirmation before proceeding to implementation.
 </process>

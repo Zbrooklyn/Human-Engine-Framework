@@ -51,15 +51,21 @@ Produce concrete actions:
 |--------|------|--------|
 | [what to do] | Memory update / Process change / Skill improvement | [where to apply it] |
 
-### Step 6: Log the Reflection
+### Step 6: Approval Gate
 
-If the reflection surfaced anything worth preserving:
+Before writing anything to persistent files, present the proposed actions to the user:
 
-1. **Memory update**: If a new rule or preference was discovered, save to the appropriate memory file
-2. **Self-improvement log**: If this was a non-trivial task, append an entry to `shared/state/self-improvement-log.md`
-3. **Corrections log**: If a mistake was made, log it to `shared/memory/corrections-log.md`
+> "Here's what I'd like to save from this reflection:"
+>
+> - **Memory updates**: [list specific rules/preferences to save]
+> - **Self-improvement log**: [proposed entry]
+> - **Corrections log**: [proposed entry, if applicable]
+>
+> "Should I save these? You can approve all, pick specific ones, or skip."
 
-Use the template from `human-engine/templates/reflection-log.md`.
+**NEVER auto-write to memory files, correction logs, or self-improvement logs without user approval.** The user may disagree with the lesson extracted, or may not want a rule saved. Reflection is analysis; persisting changes is action. Present findings, wait for direction.
+
+If approved, write to the relevant files using the template from `human-engine/templates/reflection-log.md`.
 
 ### Step 7: Report to User
 

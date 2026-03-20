@@ -79,13 +79,25 @@ If there's a significant unverified concern — this pass is **WARN** or **FAIL*
 
 - **All 5 PASS** → Ready to report done
 - **Any WARN** → Report done with documented caveats
-- **Any FAIL** → NOT done. Fix the failing pass, then re-run the gate.
+- **Any FAIL** → NOT done. Fixes required.
 
-### Step 4: Output
+### Step 4: Output and Approval Gate
 
 Use the template from `human-engine/templates/gate-checklist.md`.
 
-If all passes clear, THEN and only then report to the user that the work is complete.
+Present the full gate checklist to the user, then:
+
+**If ALL PASS**: Report done. No approval needed — the evidence speaks for itself.
+
+**If ANY WARN**: Present the caveats and ask:
+> "Gate passed with warnings. These caveats exist: [list]. Ship as-is, or address them first?"
+
+Wait for user response before proceeding.
+
+**If ANY FAIL**: Present the failures and ask:
+> "Gate failed on [N] passes. Here's what needs fixing: [list]. Want me to fix these now, or do you want to handle them differently?"
+
+**NEVER auto-fix a gate failure without user approval.** The user decides what to fix, what to defer, and what to accept. Present findings, wait for direction.
 
 ## Step 5: Write Gate State File (Enforcement)
 

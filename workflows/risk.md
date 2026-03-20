@@ -68,6 +68,19 @@ Priority: High likelihood + High impact first.
 
 Use the template from `human-engine/templates/risk-assessment.md`.
 
+### Step 7: Approval Gate
+
+After presenting the risk matrix, ask the user:
+
+> "Here are the risks. How do you want to handle them?"
+>
+> For each risk, the user can choose:
+> - **Mitigate now** — fix or add safeguards before shipping
+> - **Monitor** — ship but watch for this specific thing
+> - **Accept** — acknowledged, not worth addressing right now
+
+**NEVER auto-implement mitigations without user approval.** Risk tolerance is a business decision. A "High" risk may be acceptable if the user is shipping an MVP, or unacceptable if this is a production system. Present findings, wait for direction.
+
 ## Key Principle
 
 Risk assessment is not pessimism. It's preparation.

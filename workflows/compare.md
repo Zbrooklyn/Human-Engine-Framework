@@ -78,6 +78,19 @@ Identify:
 [Competitive / Needs work in specific areas / Not competitive yet]
 ```
 
+### Step 6: Approval Gate
+
+After presenting the report, ask the user:
+
+> "Here's the competitive analysis. What do you want to do about the gaps?"
+>
+> **A)** Fix must-fix gaps now — [list them]
+> **B)** Add gaps to backlog — track but don't fix yet
+> **C)** Acceptable — we're differentiated enough, gaps are OK
+> **D)** Reprioritize — the comparison changed what we should work on next
+
+**NEVER auto-prioritize or auto-fix based on comparison findings.** The user may value different dimensions than the analysis suggests. A gap that looks critical from a feature checklist may not matter to the actual target audience. Present findings, wait for direction.
+
 ## Key Principle
 
 Honest comparison is more valuable than flattering self-assessment.

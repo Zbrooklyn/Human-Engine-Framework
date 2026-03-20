@@ -81,12 +81,22 @@ Format:
 [Real problems found / Concerns but manageable / Clean — nothing surfaced]
 ```
 
-### Step 5: Re-Loop if Needed
+### Step 5: Approval Gate
 
-If any real problems were found, they should be fixed or escalated.
-After fixing, re-run the doubt loop on the fix itself.
+Present all findings to the user, then ask:
 
-The loop terminates when a pass surfaces nothing new.
+> "Here's what the doubt check surfaced. How do you want to proceed?"
+>
+> **A)** Fix these issues now — [list the fixable ones]
+> **B)** Acknowledge and move on — these are acceptable risks
+> **C)** Investigate further — [specify what needs deeper analysis]
+
+**NEVER auto-fix issues found by the doubt check without user approval.** The user may have context about why something is the way it is, or may disagree with the concern. Present findings, wait for direction.
+
+### Step 6: Re-Loop if Needed
+
+If the user chose A (fix), after fixing, re-run the doubt loop on the fix itself.
+The loop terminates when a pass surfaces nothing new OR the user says to stop.
 
 ## Key Principle
 

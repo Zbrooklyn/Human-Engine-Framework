@@ -75,15 +75,21 @@ The report should include:
 - Action items sorted by severity
 - The Core Question answered with evidence
 
-### Step 5: Present to User
+### Step 5: Present to User and Approval Gate
 
 Start with the summary table. Then details. Then actions.
 
 If any phase is FAIL:
-> "This is not ready to ship. [N] critical issues found. Here's what needs to happen:"
+> "This is not ready to ship. [N] critical issues found. Here's what I recommend:"
+> [list actions sorted by severity]
+> "Want me to fix these now, fix specific ones, or do you want to handle them differently?"
 
 If all PASS or WARN:
-> "Ready to ship with [N] caveats. Here's the full report:"
+> "Ready to ship with [N] caveats. Here's the full report."
+> [If any WARN items have recommended actions]:
+> "These warnings have suggested fixes: [list]. Address them, or ship as-is?"
+
+**NEVER auto-fix findings from a full audit without user approval.** The audit produces analysis and recommendations. The user decides what to act on. This is especially important for the full audit because it touches the entire project — autonomous fixes could have unintended scope.
 
 ## Fallback
 

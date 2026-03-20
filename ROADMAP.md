@@ -9,12 +9,23 @@
 - [x] Public GitHub repo
 - [x] Project folder + HANDOFF
 
-## v1.1.0 — Enforcement (IN PROGRESS)
+## v1.1.0 — Enforcement & Self-Audit Fixes (COMPLETE)
 - [x] Gate enforcement hook (`he-gate-enforcer.js`) — warns before `git commit` if no `/he:gate` evidence
 - [x] Gate state file — `/he:gate` writes pass/fail state to temp file
 - [x] Hook registered in `settings.json` as PreToolUse
-- [ ] Test enforcement on a real commit — verify the hook fires and the warning appears
-- [ ] Test gate state file creation — verify `/he:gate` writes the marker correctly
+- [x] Hook fires — confirmed live during self-audit session
+- [x] Fix: SESSION_ID mismatch — gate workflow no longer uses missing env var
+- [x] Fix: WARN verdict now accepted by enforcement hook (was PASS-only)
+- [x] Fix: Project opt-in — hook only fires in projects with `.human-engine` marker
+- [x] Fix: Gate fatigue — shortened warning messages
+- [x] Fix: `/he:review` and `/he:full` overlap — full is now a shortcut for review Deep Parallel mode
+- [x] Fix: Empty project guard clause in full workflow
+- [x] MIT LICENSE added to public repo
+- [x] README: Quick Start with example output added
+- [x] README: Enforcement opt-in section added
+- [x] Internal review doc removed from public repo
+- [x] Hook included in repo (`hooks/`) for distribution
+- [ ] Test full gate→commit enforcement cycle end-to-end (session ID resolution)
 - [ ] Tune staleness window (currently 30 min) based on real usage
 
 ## v1.2.0 — Cross-Model Compatibility
@@ -22,17 +33,17 @@
 - [ ] Add a section to `CODEX.md` and `GEMINI.md` pointing to the shared references
 - [ ] Document which parts are Claude-only (commands, hooks) vs. cross-model (references, templates)
 
-## v1.3.0 — Deduplication
-- [ ] Audit overlap between `human-engine/references/` and `shared/memory/hot-memory.md`
-- [ ] Trim hot-memory entries that the framework now canonicalizes (Human OS section, Self-Check Loop, False Confidence, Resilience)
-- [ ] Replace inline rules in `MEMORY.md` with pointers to framework files
-- [ ] Update `shared/contracts/execution-contract.md` to reference Human Engine instead of duplicating the review loop content
-
-## v1.4.0 — Real-World Validation
+## v1.3.0 — Real-World Validation
 - [ ] Run `/he:think` → work → `/he:gate` → `/he:reflect` on 3 different real tasks
 - [ ] Document what worked and what felt clunky
 - [ ] Adjust workflow based on friction points
 - [ ] Collect evidence: did the framework catch something the old approach would have missed?
+
+## v1.4.0 — Deduplication
+- [ ] Audit overlap between `human-engine/references/` and `shared/memory/hot-memory.md`
+- [ ] Trim hot-memory entries that the framework now canonicalizes
+- [ ] Replace inline rules in `MEMORY.md` with pointers to framework files
+- [ ] Update `shared/contracts/execution-contract.md` to reference Human Engine instead of duplicating the review loop content
 
 ## v1.5.0 — Polish & Expansion
 - [ ] Add `/he:do` router — smart dispatcher like `/gsd:do` for natural language routing

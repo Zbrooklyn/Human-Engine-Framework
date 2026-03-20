@@ -6,6 +6,7 @@
 - **Owner Model**: Claude
 - **Public Repo**: https://github.com/Zbrooklyn/Human-Engine-Framework
 - **Local Install**: `~/.claude/commands/he/` + `~/.claude/human-engine/`
+- **Version**: v1.1.0
 - **Last Updated**: 2026-03-20
 
 ## What Is This
@@ -67,23 +68,35 @@ Built from:
 - [x] Gate state file — `/he:gate` writes PASS/WARN/FAIL to temp marker
 - [x] Hook registered in `~/.claude/settings.json`
 - [x] ROADMAP.md with versioned plan (v1.0–v1.5 + future ideas)
+- [x] Self-audit: ran `/he:full` on the framework itself — found and fixed 2 critical bugs
+- [x] Fix: SESSION_ID mismatch in gate workflow (was writing to wrong filename)
+- [x] Fix: WARN verdict now accepted by enforcement hook
+- [x] Fix: Project opt-in via `.human-engine` marker (hook no longer fires globally)
+- [x] Fix: Gate fatigue — shortened warning messages
+- [x] Fix: `/he:full` is now a shortcut for `/he:review` Deep Parallel (eliminates overlap)
+- [x] Fix: Empty project guard clause in full workflow
+- [x] MIT LICENSE added
+- [x] README: Quick Start with example output, Enforcement opt-in section
+- [x] Internal review doc removed from public repo
+- [x] Hook included in repo for distribution
 
 ## Next Actions
 
 See `ROADMAP.md` for the full versioned plan. Current priority:
 
-- [ ] **Test enforcement** — verify the hook fires on `git commit` and the gate state file works
-- [ ] **Real-world validation** — run the full cycle on 3 real tasks
+- [ ] **Test gate→commit cycle** — verify session ID resolves correctly end-to-end
+- [ ] **Real-world validation** (v1.3) — run the full cycle on 3 real tasks
 - [ ] **Cross-model references** (v1.2) — copy references to `shared/` for Codex/Gemini
-- [ ] **Deduplicate** (v1.3) — trim hot-memory/MEMORY.md entries the framework canonicalizes
+- [ ] **Deduplicate** (v1.4) — trim hot-memory/MEMORY.md entries the framework canonicalizes
 
 ## Known Issues
 
 - Claude-only: commands use `.claude/commands/` which other models can't invoke (v1.2 addresses references)
-- Overlap with hot-memory/MEMORY.md rules — two sources of truth that could drift (v1.3 addresses)
+- Overlap with hot-memory/MEMORY.md rules — two sources of truth that could drift (v1.4 addresses)
 - `/he:full` parallel mode is token-expensive (5 agents reading codebase)
 - `@` file paths in commands are absolute to this machine — not portable for other users (v1.5)
 - Enforcement is soft (warning only) — hard enforcement is a v1.5 opt-in option
+- Session ID resolution for gate state file not yet validated end-to-end
 
 ## Related Projects
 

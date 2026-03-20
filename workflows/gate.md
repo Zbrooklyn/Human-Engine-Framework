@@ -91,23 +91,27 @@ If all passes clear, THEN and only then report to the user that the work is comp
 
 After all 5 passes are evaluated, write a state file so the enforcement hook knows the gate was run.
 
-Run this Bash command:
+The agent must write the gate state file using the session ID from the current Claude Code session context. The session ID is available in the hook system's `session_id` field — the agent should use whatever session identifier it has access to.
+
+Run this Bash command, replacing `SESSION_ID_HERE` with the actual session ID and `VERDICT_HERE` with the verdict:
 ```bash
 node -e "
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const sessionId = process.env.SESSION_ID || 'unknown';
-const verdict = process.argv[1];
+const sessionId = process.argv[1];
+const verdict = process.argv[2];
 const gatePath = path.join(os.tmpdir(), 'he-gate-' + sessionId + '.json');
 fs.writeFileSync(gatePath, JSON.stringify({
   timestamp: Math.floor(Date.now() / 1000),
   verdict: verdict,
   session_id: sessionId
 }));
-console.log('Gate state written: ' + verdict);
-" "VERDICT_HERE"
+console.log('Gate state written: ' + verdict + ' for session ' + sessionId);
+" "SESSION_ID_HERE" "VERDICT_HERE"
 ```
+
+**How to get the session ID**: The agent should check `$SESSION_ID` env var first. If empty, use the session identifier from the conversation context. As a last resort, use the output of `echo $CLAUDE_SESSION_ID` or similar Claude Code environment variables. The key requirement is that this value matches the `session_id` field that the enforcement hook receives in its JSON input.
 
 Replace `VERDICT_HERE` with:
 - `PASS` — all 5 passes cleared

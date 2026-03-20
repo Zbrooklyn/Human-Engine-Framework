@@ -1,6 +1,6 @@
 ---
 name: he:full
-description: Full Human Engine audit — all 10 phases, 21 categories, scored end-to-end. The highest-confidence quality check. Use for major milestones, releases, or high-stakes deliverables.
+description: Full Human Engine audit — shortcut for /he:review in Deep Parallel mode. All 10 phases, 21 categories, 5 parallel agents. Use for major milestones, releases, or high-stakes deliverables.
 argument-hint: "[subject to audit]"
 allowed-tools:
   - Read
@@ -14,14 +14,15 @@ allowed-tools:
   - WebFetch
 ---
 <objective>
-Run ALL 10 phases of the Human Operating System as a comprehensive scored audit. Launches 5 parallel agents for maximum coverage, then consolidates into a single report.
+This is a convenience shortcut. It runs `/he:review` in Deep Parallel mode (mode B) without asking which mode to use.
 
-**Creates:** Full Review Report (saved to file)
+Equivalent to: `/he:review` → select mode B (Deep Parallel).
 
-**This is the most thorough check in the Human Engine.** If it passes, you'd be comfortable presenting the work to anyone.
+Use this when you know you want the full parallel audit and don't want to go through mode selection.
 </objective>
 
 <execution_context>
+@C:/Users/Owner/.claude/human-engine/workflows/review.md
 @C:/Users/Owner/.claude/human-engine/workflows/full.md
 @C:/Users/Owner/.claude/human-engine/references/framework.md
 @C:/Users/Owner/.claude/human-engine/references/review-modes.md
@@ -35,8 +36,9 @@ $ARGUMENTS
 </context>
 
 <process>
-Execute the full workflow from @C:/Users/Owner/.claude/human-engine/workflows/full.md end-to-end.
-Launch 5 parallel agents covering all 21 categories. Consolidate findings.
-Run self-doubt loop on consolidated findings. Produce scored report.
-Present summary table first, then details, then actions.
+Skip the mode selection prompt. Go directly to Deep Parallel mode (mode B) from the review workflow.
+Use the full workflow's agent configuration (5 parallel agents) from @C:/Users/Owner/.claude/human-engine/workflows/full.md.
+Consolidate findings and produce the scored report using the review-report template.
+
+If the subject is too small or the Agent tool is unavailable, fall back to Quick Review (mode A) and inform the user.
 </process>

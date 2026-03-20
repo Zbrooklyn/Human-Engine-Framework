@@ -17,6 +17,8 @@ What is being audited? Read all relevant files.
 
 This should be something substantial — a feature, a project, a release. For small changes, use `/he:gate` instead.
 
+**Guard clause**: If the project has no code, no meaningful files, or is in early planning, do NOT launch 5 agents on empty content. Instead, tell the user: "This project doesn't have enough substance for a full audit yet. Try `/he:think` to plan the approach, or `/he:gate` after you've built something." Exit the workflow.
+
 ### Step 2: Determine Execution Mode
 
 For a full audit, prefer **Deep Parallel** mode:

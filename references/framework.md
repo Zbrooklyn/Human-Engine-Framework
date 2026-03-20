@@ -54,6 +54,7 @@ The loop never terminates. Self-doubt (Phase 8) triggers another full cycle if i
 - Would they understand what to do?
 - Where might they get confused?
 - What feels smooth versus awkward?
+- Am I making decisions the user should be making?
 
 ### 7. Emotional and Psychological Response
 - Does this feel trustworthy?
@@ -118,6 +119,7 @@ The loop never terminates. Self-doubt (Phase 8) triggers another full cycle if i
 - What assumptions did I make?
 - What would a stricter reviewer criticize?
 - What part of this makes me uneasy?
+- Am I acting where I should be asking?
 
 > **CRITICAL**: If this phase surfaces anything, loop back to Phase 1.
 
